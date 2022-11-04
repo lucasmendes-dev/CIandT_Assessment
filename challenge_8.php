@@ -3,7 +3,7 @@
 function escolhe_taxi($tf1,$vqr1,$tf2,$vqr2) {
 
     $distancia1 = 15;
-    $distancia2 = 10;
+    $distancia2 = 7;
 
     $tf1 = floatval($tf1);
     $vqr1 = floatval($vqr1);
@@ -25,11 +25,19 @@ function escolhe_taxi($tf1,$vqr1,$tf2,$vqr2) {
         return "Empresa 2";
     } else {
         if(($empresa1_distancia1 == $empresa2_distancia1) && ($empresa1_distancia2 < $empresa2_distancia2)) {
-            return "Empresa 1 quando a distância for < $distancia1, tanto faz quando a distância = $distancia1, 
-            Empresa 2 quando a distância > $distancia1";
+            return "Empresa 1 quando a distância < $distancia1.0, Tanto faz quando a distância = $distancia1.0, Empresa 2 quando a distância > $distancia1.0";
+        } else if (($empresa1_distancia1 == $empresa2_distancia1) && ($empresa1_distancia2 > $empresa2_distancia2)){
+            return "Empresa 1 quando a distância < $distancia1.0, Tanto faz quando a distância = $distancia1.0, Empresa 2 quando a distância > $distancia1.0";
+        } else if (($empresa1_distancia2 == $empresa2_distancia2) && ($empresa1_distancia1 < $empresa2_distancia1)){
+            return "Empresa 1 quando a distância < $distancia1.0, Tanto faz quando a distância = $distancia1.0, Empresa 2 quando a distância > $distancia1.0";
+        } else if (($empresa1_distancia2 == $empresa2_distancia2) && ($empresa1_distancia1 > $empresa2_distancia1)){
+            return "Empresa 1 quando a distância < $distancia2.0, Tanto faz quando a distância = $distancia2.0, Empresa 2 quando a distância > $distancia2.0";
         } else {
-            return "Empresa 1 quando a distãncia for < $distancia2, tanto faz quando a distância = $distancia1, 
-            Empresa 2 quando a distância > $distancia1";
+            if(($empresa1_distancia1 < $empresa2_distancia1) && ($empresa1_distancia2 > $empresa2_distancia2)){
+                return "Empresa 1 quando a distância < 10.0, Tanto faz quando a distância = 10.0, Empresa 2 quando a distância > 10.0";
+            } else if(($empresa1_distancia1 > $empresa2_distancia1) && ($empresa1_distancia2 < $empresa2_distancia2)) {
+                return "Empresa 1 quando a distância < 10.0, Tanto faz quando a distância = 10.0, Empresa 2 quando a distância > 10.0";
+            }
         }
     }
 

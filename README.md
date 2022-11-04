@@ -149,3 +149,39 @@ TF2 = 5,00
 VQR2 = 0,75
 Output:
 “Empresa 1 quando a distância < 10.0, Tanto faz quando a distância = 10.0, Empresa 2 quando a distância > 10.0”
+
+// ------------------- DESAFIO 9 -------------------//
+// ------------------- DESAFIO 9 -------------------//
+
+Ao se comparar se uma string é maior que outra, considera-se a ordem alfabética ou lexicográfica. No caso, “abcd” < “adbc” < “bacd”.
+
+Escreva uma função que receba uma string A e retorne uma string B, sendo que B é composta pelos mesmos caracteres que A reordenados.
+
+B deve obedecer às seguintes condições:
+
+Ser maior que A
+Ser a menor string possível que cumpra as condições acima
+Caso não seja possível encontrar uma string que cumpra as condições, retorne a string “sem reposta”.
+Por exemplo:
+
+A = “ab”
+Logo, o resultado será “ba”
+
+A = “abcde”
+Logo, o resultado será “abced”
+
+A = “ba”
+Nesse caso, o resultado será “sem resposta"
+
+
+// ------------------- DESAFIO 10 -------------------//
+// ------------------- DESAFIO 10 -------------------//
+
+
+Sua equipe está trabalhando em um app de streaming de músicas e uma das funcionalidades é criar um embaralhador de músicas. Uma pesquisa feita pela equipe de UX (experiência do usuário) mostrou que essa é uma das funcionalidades mais importantes para os usuários e por isso foi priorizada a criação de um experimento para testar a melhor solução.
+
+A ideia é criar vários embaralhadores diferentes e realizar um teste com partes dos usuários (chamado de teste A/B), onde cada grupo de usuários selecionado recebe uma versão e através de pesquisas e métricas de utilização saberemos qual terá a maior aceitação.
+
+Sua tarefa será desenvolver um desses embaralhadores. Você deve criar uma função que receberá uma lista de pesos que representa as músicas mais ouvidas pelo usuário. Sua função deve retornar uma lista organizada intercalando as músicas mais ouvidas com as músicas menos ouvidas. Por exemplo:
+
+Na situação onde a lista de pesos é: [2, 10, 5, 3] sua função deverá retornar [10, 2, 5, 3]
