@@ -1,32 +1,31 @@
 <?php
 
 function calcula_numero_da_senha($valores) {
+
+    $digitos = [];
     $zeros = 0;
     $um = 0;
-    $digitos = [];
 
-    foreach($valores as $valor) {
-
-        $valor = str_split($valor);  //converter string pra array;
-        foreach($valor as $num){
-            if($num == 1) {
-                $um += 1;
-            } else {
-                $zeros += 1;
-            }
+    for($i = 0; $i < sizeof($valores); $i++) {
+        for($j = 0; $j < sizeof($valores); $j++) {
+                if($valores[$j][$i] == 0) {
+                    $zeros += 1;                    
+                } else {
+                    $um += 1;
+                }                 
         }
-
-        if($um >= 5){
-            $digitos[] = "1";
+        if($um >= $zeros) {
+            $digitos[] = 1;
         } else {
-            $digitos[] = "0";
+            $digitos[] = 0;
         }
-        
-        $zeros = 0; //resetar contador;
-        $um = 0; //resetar contador;
+        $zeros = 0;
+        $um = 0;          
+ 
     }
-
-    return implode("", $digitos);
+    
+    $digitos = implode("", $digitos);
+    return bindec($digitos);
 }
 
 
@@ -44,9 +43,9 @@ $valores = [
 ];
 
 $senha_binaria = calcula_numero_da_senha($valores);
-$result = bindec($senha_binaria); //função que converte binário para decimal;
 
-echo "A senha Binária '$senha_binaria' convertida para decimal, dá o resultado de: $result ";
+
+echo $senha_binaria;
 
 
 ?>
