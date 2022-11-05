@@ -1,48 +1,29 @@
-function calcula_numero_da_senha($valores) {
-    $zeros = 0;
-    $um = 0;
-    $digitos = [];
+function checa_numero_escondido($numero,$numeroOculto) {
+  
+  if(($numero == "" || $numeroOculto == "") || !str_contains($numero, $numeroOculto)){
+      return false;
+  } else {
+      $numero = str_split($numero);
+      $numero_verificacao = "";
 
-    foreach($valores as $valor) {
-
-        $valor = str_split($valor);  //converter string pra array;
-        foreach($valor as $num){
-            if($num == 1) {
-                $um += 1;
-            } else {
-                $zeros += 1;
-            }
-        }
-
-        if($um >= 5){
-            $digitos[] = "1";
-        } else {
-            $digitos[] = "0";
-        }
-        
-        $zeros = 0; //resetar contador;
-        $um = 0; //resetar contador;
-    }
-
-    return implode("", $digitos);
+      for($i = 0; $i < sizeof($numero); $i++){
+          if(str_contains($numeroOculto, $numero[$i])){
+              $numero_verificacao .= "$numero[$i]";
+              if($numero_verificacao == $numeroOculto) {
+                  return true;
+              }
+          }
+      }
+      return false;
+  }  
 }
 
+$numero = '';
+$numeroOculto = '153';
 
-$valores = [
-    "0110100000",    //coloquei valores em string ("") pra ficar mais fácil a conversão;
-    "1001011111",
-    "1110001010",
-    "0111010101",
-    "0011100110",
-    "1010011001",
-    "1101100100",
-    "1011010100",
-    "1001100111",
-    "1000011000"
-];
-
-
-$senha_binaria = calcula_numero_da_senha($valores);
-$result = bindec($senha_binaria); //função que converte binário para decimal;
-
-echo "A senha Binária '$senha_binaria' convertida para decimal, dá o resultado de: $result ";
+$checar = checa_numero_escondido($numero,$numeroOculto);
+if ($checar) {
+echo "O número $numero esconde o $numeroOculto. ";
+} else {
+echo "O número $numero NÃO esconde o $numeroOculto. ";
+}
