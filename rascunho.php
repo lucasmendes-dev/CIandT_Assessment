@@ -1,37 +1,33 @@
-function escolhe_taxi($tf1,$vqr1,$tf2,$vqr2) {
+//Para este exercício foram usados valores da tabela ASCII, através da função "ord" do PHP.
+function menor_string_maior($name) {
 
-$distancia1 = 15.0;
-$distancia2 = 7.0;
-$distancia_igual = number_format((float)10, 1, '.');
+  if($name == ""){
 
-$tf1 = floatval($tf1);
-$vqr1 = floatval($vqr1);
-$tf2 = floatval($tf2);
-$vqr2 = floatval($vqr2);
+    return "sem resposta";
+    
+  } else {
+    
+    $array = str_split($name);
+
+    for($i = (sizeof($array) - 1); $i >= 1; $i--){  
+      if(ord($array[$i]) > ord($array[$i - 1])) {
+        $aux = $array[$i - 1];
+        $array[$i - 1] = $array[$i];
+        $array[$i] = $aux;
+        break;
+      } else if ($i == 1 && $array[$i] < $array[$i - 1]) {
+        return "sem resposta";
+      } 
+    }
 
 
-$empresa1_distancia1 = $tf1 + ($vqr1 * $distancia1);
-$empresa2_distancia1 = $tf2 + ($vqr2 * $distancia1);
+    return implode("", $array);
+  }
 
-$empresa1_distancia2 = $tf1 + ($vqr1 * $distancia2);
-$empresa2_distancia2 = $tf2 + ($vqr2 * $distancia2);
-
-if(($empresa1_distancia1 == $empresa2_distancia1) && ($empresa1_distancia2 == $empresa2_distancia2)){
-    return "Tanto faz";
-} else if (($empresa1_distancia1 < $empresa2_distancia1) && ($empresa1_distancia2 < $empresa2_distancia2)) {
-    return "Empresa 1";
-} else if (($empresa1_distancia1 > $empresa2_distancia1) && ($empresa1_distancia2 > $empresa2_distancia2)) {
-    return "Empresa 2";
-} else {
-  return "Empresa 1 quando a distância < $distancia_igual, Tanto faz quando a distância = $distancia_igual, Empresa 2 quando a distância > $distancia_igual";
 }
-}
 
+$name = "nextgen";
 
-$tf1 = '2.50';
-$vqr1 = '1.0';
-$tf2 = '5.0';
-$vqr2 = '0.75';
+$result = menor_string_maior($name);
+print_r($result);
 
-$empresa_escolhida = escolhe_taxi($tf1,$vqr1,$tf2,$vqr2);
-echo $empresa_escolhida;
