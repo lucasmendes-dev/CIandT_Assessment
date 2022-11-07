@@ -3,35 +3,39 @@
 function checa_numero_escondido($numero,$numeroOculto) {
   
     if(!is_numeric($numero) || !is_numeric($numeroOculto)){
-        echo "oi";
         return false;
     } else {
+
+        $aux = $numeroOculto;
         $numero = str_split($numero);
-        $numero_verificacao = "";
-  
-        for($i = 0; $i < sizeof($numero); $i++){
-            if(str_contains($numeroOculto, $numero[$i])){
-                $numero_verificacao .= "$numero[$i]";
-                if($numero_verificacao == $numeroOculto) {
-                    echo "oi2";
-                    return true;
-                    
-                }
+        $numeroOculto = str_split($numeroOculto);
+        $result = "";
+
+        for($i = 0; $i < sizeof($numero); $i++) {
+            if($numero[$i] == $numeroOculto[0]){
+
+                $result .= array_shift($numeroOculto);
+                
+            }
+            if(!$numeroOculto) {
+                break;
             }
         }
-        echo "oi3";
-        return false;
-    }  
+        
+        if($result == $aux) {
+            return true; 
+        } else {
+            return false;
+        }
+    }
+      
 }
 
-$numero = "abs";
-$numeroOculto = 244;
+$numero = "12310";
+$numeroOculto = "21";
   
 $checar = checa_numero_escondido($numero,$numeroOculto);
-if ($checar) {
-  echo "O número $numero esconde o $numeroOculto. ";
-} else {
-  echo "O número $numero NÃO esconde o $numeroOculto. ";
-}
+print_r($checar);
+
 
 ?>

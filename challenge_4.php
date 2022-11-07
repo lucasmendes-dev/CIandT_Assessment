@@ -33,13 +33,13 @@ function calcula_top_ocorrencias_de_queries($texto,$queries,$k) {
         }        
     }
 
-
     $result[] = $maior_term;
     $result[] = $segundo_maior_term;
     $result[] = $terceiro_maior_term;
 
     return array_slice($result, 0, $k);
 }
+
 
 //---------------------------------------------------------------//
 

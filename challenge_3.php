@@ -30,7 +30,7 @@ function calcula_numero_da_senha($valores) {
 
 
 $valores = [
-    "0110100000",    //coloquei valores em string ("") pra ficar mais fácil a conversão;
+    "0110100000",    
     "1001011111",
     "1110001010",
     "0111010101",
@@ -42,10 +42,8 @@ $valores = [
     "1000011000"
 ];
 
-$senha_binaria = calcula_numero_da_senha($valores);
-
-
-echo $senha_binaria;
+$resultado = calcula_numero_da_senha($valores);
+echo "A senha binária das colunas gerou o valor decimal de: $resultado ";
 
 
 ?>

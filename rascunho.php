@@ -1,33 +1,31 @@
-//Para este exercício foram usados valores da tabela ASCII, através da função "ord" do PHP.
-function menor_string_maior($name) {
+function checa_numero_escondido($numero,$numeroOculto) {
 
-  if($name == ""){
-
-    return "sem resposta";
-    
-  } else {
-    
-    $array = str_split($name);
-
-    for($i = (sizeof($array) - 1); $i >= 1; $i--){  
-      if(ord($array[$i]) > ord($array[$i - 1])) {
-        $aux = $array[$i - 1];
-        $array[$i - 1] = $array[$i];
-        $array[$i] = $aux;
-        break;
-      } else if ($i == 1 && $array[$i] < $array[$i - 1]) {
-        return "sem resposta";
-      } 
-    }
-
-
-    return implode("", $array);
-  }
-
+if(!is_numeric($numero) || !is_numeric($numeroOculto)){
+  return false;
+} else if($numero === $numeroOculto) {
+    return true;
+}  else {
+    $numero = str_split($numero);
+    $numero_verificacao = "";
+    for($i = 0; $i < sizeof($numero); $i++){   
+        if(str_contains($numeroOculto, $numero[$i])){  
+          if(str_contains($numero_verificacao, $numero[$i])){
+            continue;
+          }
+          $numero_verificacao .= $numero[$i];
+          if($numero_verificacao == $numeroOculto) {
+              return true;
+          }
+        }
+    }        
+    echo $numero_verificacao;
+    return false;
+}  
 }
 
-$name = "nextgen";
+$numero = "12310";
+$numeroOculto = "21";
 
-$result = menor_string_maior($name);
-print_r($result);
 
+$checar = checa_numero_escondido($numero,$numeroOculto);
+echo $checar;

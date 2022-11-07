@@ -3,7 +3,7 @@
 function retorna_menor_e_maior_valor_de_vendas($lista_vendas) {
   
   $menor = 0;
-  $maior = 0;   
+  $maior = 0;       
   $min = 20;
   $max = 500;   
   $menor_maior = [];
@@ -31,15 +31,15 @@ function retorna_menor_e_maior_valor_de_vendas($lista_vendas) {
   return $menor_maior;
 }
   
-  $lista_vendas = [
+$lista_vendas = [     //Lista de vendas aleatórias que criei para o exercício
       [50, 301, 140],
       [315, 0, 10],
       [15, 68, 220],
       [500, 20, 90]
     ];
   
-  $result = retorna_menor_e_maior_valor_de_vendas($lista_vendas);
+$result = retorna_menor_e_maior_valor_de_vendas($lista_vendas);
   
-  echo "O menor valor de vendas é: R$$result[0] e o maior é: R$$result[1] ";
+echo "O menor valor de vendas é: R$$result[0] e o maior é: R$$result[1] ";
 
 ?>
